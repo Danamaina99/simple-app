@@ -1,7 +1,7 @@
 pipeline {
     agent any
     tools {
-        maven 'maven3'
+        maven 'maven-3.8'
     }
     options {
         buildDiscarder logRotator(daysToKeepStr: '5', numToKeepStr: '7')
@@ -13,7 +13,7 @@ pipeline {
                  archiveArtifacts artifacts: 'target/*.war', onlyIfSuccessful: true
             }
         }
-        stage('Upload War To Nexus'){
+        /*stage('Upload War To Nexus'){
             steps{
                 script{
 
@@ -35,7 +35,7 @@ pipeline {
                     repository: nexusRepoName, 
                     version: "${mavenPom.version}"
                     }
-            }
+            } **/
         }
     }
 }
